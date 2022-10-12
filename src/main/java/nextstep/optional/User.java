@@ -1,5 +1,8 @@
 package nextstep.optional;
 
+import java.util.Optional;
+import java.util.function.Predicate;
+
 public class User {
     private String name;
     private Integer age;
@@ -33,7 +36,18 @@ public class User {
     }
 
     public static boolean ageIsInRange2(User user) {
-        return false;
+        return Optional.ofNullable(user)
+                .filter(User::isAgeNotNull)
+                .filter(User::isAgeBetween30And45)
+                .isPresent();
+    }
+
+    private static boolean isAgeNotNull(User cntUser) {
+        return cntUser.getAge() != null;
+    }
+
+    private static boolean isAgeBetween30And45(User cntUser) {
+        return cntUser.getAge() >= 30 && cntUser.getAge() <= 45;
     }
 
     @Override
