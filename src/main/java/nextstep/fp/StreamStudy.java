@@ -5,7 +5,9 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class StreamStudy {
@@ -27,7 +29,21 @@ public class StreamStudy {
                 .get("src/main/resources/fp/war-and-peace.txt")), StandardCharsets.UTF_8);
         List<String> words = Arrays.asList(contents.split("[\\P{L}]+"));
 
-        // TODO 이 부분에 구현한다.
+        words.stream()
+                .filter(lengthOver12())         // 길이가 12보다 긴 것만 추출
+                .sorted(byLengthDescending())   // 길이순으로 내림차순 정렬
+                .distinct()                     // 중복 단어 제거
+                .limit(100)                     // 100개 추출
+                .map(String::toLowerCase)       // 소문자로 변환
+                .forEach(System.out::println);
+    }
+
+    private static Comparator<String> byLengthDescending() {
+        return Comparator.comparing(String::length, Comparator.reverseOrder());
+    }
+
+    private static Predicate<String> lengthOver12() {
+        return word -> word.length() > 12;
     }
 
     public static List<Integer> doubleNumbers(List<Integer> numbers) {
@@ -35,10 +51,13 @@ public class StreamStudy {
     }
 
     public static long sumAll(List<Integer> numbers) {
-        return numbers.stream().reduce(0, (x, y) -> x + y);
+        return numbers.stream().reduce(0, Integer::sum);
     }
 
     public static long sumOverThreeAndDouble(List<Integer> numbers) {
-        return 0;
+        return numbers.stream()
+                .filter(number -> number > 3)
+                .mapToInt(number -> number * 2)
+                .sum();
     }
 }
