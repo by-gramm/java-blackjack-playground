@@ -32,20 +32,25 @@ public class LambdaTest {
     }
 
     @Test
+    public void runThreadLambda() throws Exception {
+        Lambda.runThreadLambda();
+    }
+
+    @Test
     public void sumAll() throws Exception {
-        int sum = Lambda.sumAll(numbers);
-        assertThat(sum).isEqualTo(21);
+        assertThat(Lambda.sumAll(numbers, (number) -> true))
+                .isEqualTo(21);
     }
 
     @Test
     public void sumAllEven() throws Exception {
-        int sum = Lambda.sumAllEven(numbers);
-        assertThat(sum).isEqualTo(12);
+        assertThat(Lambda.sumAll(numbers, (number -> number % 2 == 0)))
+                .isEqualTo(12);
     }
 
     @Test
     public void sumAllOverThree() throws Exception {
-        int sum = Lambda.sumAllOverThree(numbers);
-        assertThat(sum).isEqualTo(15);
+        assertThat(Lambda.sumAll(numbers, (number -> number > 3)))
+                .isEqualTo(15);
     }
 }
