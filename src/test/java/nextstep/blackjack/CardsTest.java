@@ -66,4 +66,12 @@ public class CardsTest {
 
         assertThat(cards.isBlackJack()).isEqualTo(true);
     }
+
+    @Test
+    void 최종_점수_계산() {
+        cards.addCard(card1);
+        cards.addCard(card6);
+
+        assertThat(cards.getTotalScore()).isEqualTo(17);
+    }
 }

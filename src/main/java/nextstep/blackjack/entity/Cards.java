@@ -37,6 +37,15 @@ public class Cards {
     }
 
     private int getAceCount() {
-        return (int) cards.stream().filter(Card::isAce).count();
+        return (int) cards.stream()
+                .filter(Card::isAce)
+                .count();
+    }
+
+    public Integer getTotalScore() {
+        if (getAceCount() > 0 && getSum() <= 11) {
+            return getSum() + 10;
+        }
+        return getSum();
     }
 }
