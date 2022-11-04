@@ -13,4 +13,8 @@ public class Card {
         this.number = number;
         this.shape = shape;
     }
+
+    public Integer getScore() {
+        return number.getScore();
+    }
 }

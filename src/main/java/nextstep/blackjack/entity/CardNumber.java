@@ -20,4 +20,10 @@ public enum CardNumber {
     CardNumber(int number) {
         this.number = number;
     }
+
+    public int getScore() {
+        int MAX_SCORE = 10;
+
+        return Math.min(this.number, MAX_SCORE);
+    }
 }
