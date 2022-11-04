@@ -17,4 +17,8 @@ public class Card {
     public Integer getScore() {
         return number.getScore();
     }
+
+    public boolean isAce() {
+        return number.equals(CardNumber.ACE);
+    }
 }
