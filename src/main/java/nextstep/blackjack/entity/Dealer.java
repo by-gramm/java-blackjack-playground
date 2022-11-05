@@ -1,6 +1,6 @@
 package nextstep.blackjack.entity;
 
-public class Dealer {
+public class Dealer extends Participant {
 
     private static Dealer dealer = new Dealer();
 
