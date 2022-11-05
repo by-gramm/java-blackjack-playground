@@ -21,4 +21,9 @@ public class Card {
     public boolean isAce() {
         return number.equals(CardNumber.ACE);
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s%s", this.number, this.shape);
+    }
 }

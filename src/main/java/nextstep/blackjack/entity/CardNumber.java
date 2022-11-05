@@ -26,4 +26,12 @@ public enum CardNumber {
 
         return Math.min(this.number, MAX_SCORE);
     }
+
+    @Override
+    public String toString() {
+        if (this.number == 1 || this.number > 10) {
+            return this.name().substring(0, 1);
+        }
+        return Integer.toString(this.number);
+    }
 }
