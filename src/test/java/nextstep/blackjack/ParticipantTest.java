@@ -29,4 +29,12 @@ public class ParticipantTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("베팅 금액은 0 이상이어야 합니다.");
     }
+
+    @Test
+    void 게임_시작시_카드_2장_받기() {
+        Player player = Player.of("playerName", 10000);
+        player.startGame();
+
+        assertThat(player.getCardCount()).isEqualTo(2);
+    }
 }
