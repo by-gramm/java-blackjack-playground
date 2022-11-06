@@ -10,4 +10,9 @@ public class Dealer extends Participant {
     public static Dealer getInstance() {
         return dealer;
     }
+
+    @Override
+    public boolean canGetOneMoreCard() {
+        return cards.isDealerGetOneMoreCard();
+    }
 }

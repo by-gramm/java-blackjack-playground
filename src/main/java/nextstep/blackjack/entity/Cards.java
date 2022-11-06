@@ -7,6 +7,7 @@ public class Cards {
 
     public static final int BLACKJACK_POINT = 21;
     public static final int DEALER_GET_ONE_MORE_CARD_POINT = 17;
+    public static final int START_SIZE = 2;
 
     private final List<Card> cards = new ArrayList<>();
 
@@ -25,11 +26,15 @@ public class Cards {
     }
 
     public boolean isDealerGetOneMoreCard() {
-        return getSum() < DEALER_GET_ONE_MORE_CARD_POINT;
+        return getCount() == START_SIZE && getSum() < DEALER_GET_ONE_MORE_CARD_POINT;
     }
 
     public boolean isOver21() {
         return getSum() > BLACKJACK_POINT;
+    }
+
+    public boolean isUnder21() {
+        return getSum() < BLACKJACK_POINT;
     }
 
     public boolean isBlackJack() {

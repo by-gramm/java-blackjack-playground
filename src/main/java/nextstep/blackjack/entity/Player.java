@@ -16,4 +16,9 @@ public class Player extends Participant {
         this.playerName = playerName;
         this.bettingCost = bettingCost;
     }
+
+    @Override
+    public boolean canGetOneMoreCard() {
+        return cards.isUnder21();
+    }
 }

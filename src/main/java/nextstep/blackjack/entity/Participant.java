@@ -2,7 +2,7 @@ package nextstep.blackjack.entity;
 
 public abstract class Participant {
 
-    private final Cards cards = new Cards();
+    public final Cards cards = new Cards();
 
     private int profit = 0;
 
@@ -17,4 +17,6 @@ public abstract class Participant {
     public Integer getCardCount() {
         return cards.getCount();
     }
+
+    public abstract boolean canGetOneMoreCard();
 }
